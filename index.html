@@ -40,7 +40,7 @@
 <body>
 
 <div id="container">
-    <h2>Crear una nueva sesión</h2>
+    <h2>Crear un nuevo registro</h2>
     <label for="nombre">Nombre:</label><br>
     <input type="text" id="nombre" name="nombre"><br>
     <label for="fecha">Fecha:</label><br>
@@ -50,22 +50,23 @@
 
 <script>
     function iniciarSesion() {
-        var nombre = document.getElementById("nombre").value;
-        var fecha = document.getElementById("fecha").value;
+    var nombre = document.getElementById("nombre").value;
+    var fecha = document.getElementById("fecha").value;
 
-        // Verificar que se hayan ingresado nombre y fecha
-        if (nombre.trim() === "" || fecha.trim() === "") {
-            alert("Por favor, complete todos los campos.");
-            return;
-        }
-
-        // Guardar nombre y fecha en localStorage para usarlos después
-        localStorage.setItem("nombre", nombre);
-        localStorage.setItem("fecha", fecha);
-
-        // Redirigir a la página principal
-        window.location.href = "calculadora.html";
+    // Verificar que se hayan ingresado nombre y fecha
+    if (nombre.trim() === "" || fecha.trim() === "") {
+        alert("Por favor, complete todos los campos.");
+        return;
     }
+
+    // Guardar nombre y fecha en localStorage para usarlos después
+    localStorage.setItem("nombre", nombre);
+    localStorage.setItem("fecha", fecha);
+
+    // Redirigir a la página principal
+    window.location.href = "calculadora.html";
+}
+
 </script>
 
 </body>
