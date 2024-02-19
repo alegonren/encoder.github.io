@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CALCULADORA DE PORCENTAJES A PARTIR DEL ENCODER</title>
+<title>KUARENT GROUP</title>
 <style>
     body {
         display: flex;
@@ -31,16 +31,19 @@
         display: none;
     }
     /* Estilo para el enlace de descarga */
-    #descargarLink {
-        display: inline-block;
+    #descargarLink,
+    #mostrarResultados {
+        display: none; /* Inicialmente oculto */
         margin-top: 10px;
+        margin-right: 10px; /* Agregamos margen derecho */
         padding: 5px 10px;
         background-color: #007bff;
         color: white;
         text-decoration: none;
         border-radius: 5px;
     }
-    #descargarLink:hover {
+    #descargarLink:hover,
+    #mostrarResultados:hover {
         background-color: #0056b3;
     }
 </style>
@@ -67,7 +70,9 @@
     <button onclick="añadirNuevoRegistro()" id="añadirRegistro" style="display:none;">Añadir Nuevo Registro</button><br><br>
     <div id="resultados"></div><br><br>
     <!-- Enlace de descarga normal -->
-    <a id="descargarLink" href="#" onclick="añadirNuevoRegistro()" style="display: none;">Descargar resultado</a>
+    <a id="descargarLink" href="#" onclick="añadirNuevoRegistro()">Descargar resultado</a>
+    <!-- Botón para mostrar los resultados -->
+    <button id="mostrarResultados" onclick="mostrarResultados()">Mostrar resultados</button>
 </div>
 
 <script>
@@ -76,16 +81,16 @@
     function calcularPorcentajes() {
         var ejercicio = document.getElementById("ejercicio").value;
         var valor = document.getElementById("valor").value;
-        var resultado = "Ejercicio seleccionado: " + ejercicio + "\n\n";
-        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "\n";
-        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "\n";
-        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "\n";
-        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "\n";
-        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "\n\n";
-        resultado += "Tu RM son: " + (valor) +"kg"+ "\n";
-        document.getElementById("resultados").innerText = resultado;
+        var resultado = "Ejercicio seleccionado: " + ejercicio + "<br><br>";
+        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "<br>";
+        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "<br>";
+        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "<br>";
+        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "<br>";
+        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "<br><br>";
+        resultado += "Tu RM son: " + (valor) +"kg"+ "<br>";
+        document.getElementById("resultados").innerHTML = resultado;
         registros += resultado; // Agregar los nuevos resultados como registros
-        registros += "\n\n"; // Agregar dos saltos de página
+        registros += "<br><br>"; // Agregar dos saltos de página
         limpiar();
         var button = document.getElementById("añadirRegistro");
         //button.style.display = 'block'; // Mostrar el botón de añadir registro
@@ -93,6 +98,9 @@
         // Mostrar el enlace de descarga
         var link = document.getElementById('descargarLink');
         link.style.display = 'inline-block';
+        // Mostrar el botón de mostrar resultados
+        var mostrarButton = document.getElementById('mostrarResultados');
+        mostrarButton.style.display = 'inline-block';
     }
 
     function limpiar() {
@@ -114,6 +122,17 @@
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);  
         }, 0);
+    }
+
+    // Función para mostrar los resultados en una nueva ventana
+    function mostrarResultados()
+    {
+        var ventanaNueva = window.open('', '_blank');
+        var lineas = registros.split("\n");
+        for (var i = 0; i < lineas.length; i++) {
+            ventanaNueva.document.write(lineas[i] + "<br>");
+        }
+        ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
     }
 </script>
 
