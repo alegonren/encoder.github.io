@@ -11,10 +11,11 @@
         align-items: center;
         height: 100vh;
         margin: 0;
-        background-image: foto_kuarent.JPG; 
+        /*background-image:'foto_kuarent.JPG'; /* Cambia 'foto_kuarent.JPG' por la ruta de tu imagen de fondo */
+        background-color: aliceBlue;
         background-size: cover;
         font-family: Arial, sans-serif; /* Cambia la fuente a Arial */
-        color: white; /* Cambia el color del texto a blanco */
+        color: black; /* Cambia el color del texto a blanco */
     }
     #container {
         text-align: center;
@@ -25,19 +26,35 @@
 
 <div id="container">
     <h2>Calculadora de Porcentajes</h2>
+    <label for="ejercicio">Selecciona un ejercicio:</label><br>
+    <select id="ejercicio">
+        <option value="opcion1">Opción 1</option>
+        <option value="opcion2">Opción 2</option>
+        <option value="opcion3">Opción 3</option>
+    </select><br><br>
     <label for="valor">Introduce un valor numérico:</label><br>
     <input type="number" id="valor" name="valor"><br><br>
     <button onclick="calcularPorcentajes()">Calcular</button><br><br>
-    <div id="resultados"></div>
+    <div id="resultados"></div><br><br>
+    <a id="descargarLink" style="display: none;" download="resultado.txt">Descargar resultado</a>
 </div>
 
 <script>
     function calcularPorcentajes() {
+        var ejercicio = document.getElementById("ejercicio").value;
         var valor = document.getElementById("valor").value;
-        var resultadoHTML = "<p>El 50% de " + valor + " es: " + (valor * 0.5) + "</p>";
-        resultadoHTML += "<p>El 60% de " + valor + " es: " + (valor * 0.6) + "</p>";
-        resultadoHTML += "<p>El 70% de " + valor + " es: " + (valor * 0.7) + "</p>";
-        document.getElementById("resultados").innerHTML = resultadoHTML;
+        var resultado = "Ejercicio seleccionado: " + ejercicio + "\n";
+        resultado += "El 50% de " + valor + " es: " + (valor * 0.5) + "\n";
+        resultado += "El 60% de " + valor + " es: " + (valor * 0.6) + "\n";
+        resultado += "El 70% de " + valor + " es: " + (valor * 0.7) + "\n";
+        document.getElementById("resultados").innerText = resultado;
+        // Crear un objeto Blob con el contenido y configuración
+        var blob = new Blob([resultado], { type: 'text/plain' });
+        var url = window.URL.createObjectURL(blob);
+        // Establecer el enlace de descarga
+        var link = document.getElementById('descargarLink');
+        link.href = url;
+        link.style.display = 'block'; // Mostrar el enlace de descarga
     }
 </script>
 
