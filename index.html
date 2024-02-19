@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KUARENT GROUP</title>
+<title>CALCULADORA DE PORCENTAJES A PARTIR DEL ENCODER</title>
 <style>
     body {
         display: flex;
@@ -64,6 +64,7 @@
     <label for="valor">Introduce un valor numérico:</label><br>
     <input type="number" id="valor" name="valor"><br><br>
     <button onclick="calcularPorcentajes()">Calcular</button>
+    <button onclick="añadirNuevoRegistro()" id="añadirRegistro" style="display:none;">Añadir Nuevo Registro</button><br><br>
     <div id="resultados"></div><br><br>
     <!-- Enlace de descarga normal -->
     <a id="descargarLink" href="#" onclick="añadirNuevoRegistro()" style="display: none;">Descargar resultado</a>
@@ -87,7 +88,7 @@
         registros += "\n\n"; // Agregar dos saltos de página
         limpiar();
         var button = document.getElementById("añadirRegistro");
-        button.style.display = 'block'; // Mostrar el botón de añadir registro
+        //button.style.display = 'block'; // Mostrar el botón de añadir registro
 
         // Mostrar el enlace de descarga
         var link = document.getElementById('descargarLink');
