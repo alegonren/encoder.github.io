@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CALCULADORA DE PORCENTAJES A PARTIR DEL ENCODER</title>
+<title>KUARENT GROUP</title>
 <style>
     body {
         display: flex;
@@ -109,10 +109,14 @@
     }
 
     function añadirNuevoRegistro() {
-        var nombreUsuario = localStorage.getItem("nombre");
-        var fechaUsuario = localStorage.getItem("fecha");
+        // Recuperar nombre y fecha del localStorage
+var nombreUsuario = localStorage.getItem("nombre");
+var fechaUsuario = localStorage.getItem("fecha");
 
-        var file = new Blob([nombreUsuario + "\n" + fechaUsuario + "\n\n" + registros], {type: 'text/plain'});
+// Guardar los resultados con el nombre y la fecha del usuario en resultados.txt
+registros += "Nombre del usuario: " + nombreUsuario + "\n";
+registros += "Fecha introducida: " + fechaUsuario + "\n\n";
+        var file = new Blob([registros], {type: 'text/plain'});
 
         // Crear el enlace de descarga
         var a = document.createElement("a");
