@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CALCULADORA DE PORCENTAJES A PARTIR DEL ENCODER</title>
+<title>PORCENTAJES A PARTIR DEL ENCODER</title>
 <style>
     body {
         display: flex;
@@ -81,16 +81,16 @@
     function calcularPorcentajes() {
         var ejercicio = document.getElementById("ejercicio").value;
         var valor = document.getElementById("valor").value;
-        var resultado = "Ejercicio seleccionado: " + ejercicio + "<br><br>";
-        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "<br>";
-        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "<br>";
-        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "<br>";
-        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "<br>";
-        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "<br><br>";
-        resultado += "Tu RM son: " + (valor) +"kg"+ "<br>";
-        document.getElementById("resultados").innerHTML = resultado;
+        var resultado = "Ejercicio seleccionado: " + ejercicio + "\n\n";
+        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "\n";
+        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "\n";
+        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "\n";
+        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "\n";
+        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "\n\n";
+        resultado += "Tu RM son: " + (valor) +"kg"+ "\n";
+        document.getElementById("resultados").innerText = resultado;
         registros += resultado; // Agregar los nuevos resultados como registros
-        registros += "<br><br>"; // Agregar dos saltos de página
+        registros += "\n\n"; // Agregar dos saltos de página
         limpiar();
         var button = document.getElementById("añadirRegistro");
         //button.style.display = 'block'; // Mostrar el botón de añadir registro
@@ -109,13 +109,16 @@
     }
 
     function añadirNuevoRegistro() {
-        var file = new Blob([registros], {type: 'text/plain'});
-
+    var today = new Date();
+    var dateString = today.toLocaleDateString();
+    var fileContent = "Fecha de hoy: " + dateString + "\n\n" + registros;
+    var file = new Blob([fileContent], {type: 'text/plain'});
+        
         // Crear el enlace de descarga
         var a = document.createElement("a");
         var url = URL.createObjectURL(file);
         a.href = url;
-        a.download = "resultado.txt";
+        a.download = "resultadoo.txt";
         document.body.appendChild(a);
         a.click();
         setTimeout(function(){
@@ -127,10 +130,8 @@
     // Función para mostrar los resultados en una nueva ventana
     function mostrarResultados() {
         var ventanaNueva = window.open('', '_blank');
-        var lineas = registros.split("\n");
-        for (var i = 0; i < lineas.length; i++) {
-            ventanaNueva.document.write(lineas[i] + "<br>");
-        }
+        ventanaNueva.document.write('<h2>Resultados</h2>');
+        ventanaNueva.document.write('<p>' + registros + '</p>');
         ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
     }
 </script>
