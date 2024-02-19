@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PORCENTAJES A PARTIR DEL ENCODER</title>
+<title>KUARENT GROUP</title>
 <style>
     body {
         display: flex;
@@ -130,18 +130,17 @@
      // Función para mostrar los resultados en una nueva ventana
     function mostrarResultados()
     {
-        var today = new Date();
-        var dateString = today.toLocaleDateString();
-        var fileContent = "Fecha de hoy: " + dateString + "\n\n" + registros;
-        
         var ventanaNueva = window.open('', '_blank');
         var lineas = registros.split("\n");
-        ventanaNueva.document.write("fileContent + "<br>");
-        for (var i = 0; i < lineas.length; i++) {
+        ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; }</style></head><body>');
+        for (var i = 0; i < lineas.length; i++) 
+        {
             ventanaNueva.document.write(lineas[i] + "<br>");
         }
         ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
+        ventanaNueva.document.write('</body></html>');
     }
+
 </script>
 
 </body>
