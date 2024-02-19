@@ -109,23 +109,19 @@
     }
 
    function añadirNuevoRegistro() {
-    var currentDate = new Date();
-    var formattedDate = currentDate.toLocaleDateString('es-ES'); // Obtiene la fecha actual formateada
-    var fileContent = "Fecha: " + formattedDate + "\n\n" + registros; // Agrega la fecha al principio del contenido
+        var file = new Blob([registros], {type: 'text/plain'});
 
-    var file = new Blob([fileContent], {type: 'text/plain'});
-
-    // Crear el enlace de descarga
-    var a = document.createElement("a");
-    var url = URL.createObjectURL(file);
-    a.href = url;
-    a.download = "resultados.txt";
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function(){
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);  
-    }, 0);
+        // Crear el enlace de descarga
+        var a = document.createElement("a");
+        var url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = "resultado.txt";
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);  
+        }, 0);
 }
 
 
