@@ -127,8 +127,10 @@
     // Función para mostrar los resultados en una nueva ventana
     function mostrarResultados() {
         var ventanaNueva = window.open('', '_blank');
-        ventanaNueva.document.write('<h2>Resultados</h2>');
-        ventanaNueva.document.write('<p>' + registros + '</p>');
+        var lineas = registros.split("\n");
+        for (var i = 0; i < lineas.length; i++) {
+            ventanaNueva.document.write(lineas[i] + "<br>");
+        }
         ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
     }
 </script>
