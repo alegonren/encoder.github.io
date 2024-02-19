@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KUARENT GROUP</title>
-<style> 
+<title>CALCULADORA DE PORCENTAJES A PARTIR DEL ENCODER</title>
+<style>
     body {
         display: flex;
         justify-content: center;
@@ -109,7 +109,10 @@
     }
 
     function añadirNuevoRegistro() {
-        var file = new Blob([registros], {type: 'text/plain'});
+        var nombreUsuario = localStorage.getItem("nombre");
+        var fechaUsuario = localStorage.getItem("fecha");
+
+        var file = new Blob([nombreUsuario + "\n" + fechaUsuario + "\n\n" + registros], {type: 'text/plain'});
 
         // Crear el enlace de descarga
         var a = document.createElement("a");
@@ -125,8 +128,7 @@
     }
 
     // Función para mostrar los resultados en una nueva ventana
-    function mostrarResultados()
-    {
+    function mostrarResultados() {
         var ventanaNueva = window.open('', '_blank');
         var lineas = registros.split("\n");
         for (var i = 0; i < lineas.length; i++) {
