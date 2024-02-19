@@ -108,28 +108,26 @@
         document.getElementById("valor").value = ""; // Limpiar el valor del campo de entrada
     }
 
-    function añadirNuevoRegistro() {
-        // Recuperar nombre y fecha del localStorage
-var nombreUsuario = localStorage.getItem("nombre");
-var fechaUsuario = localStorage.getItem("fecha");
+   function añadirNuevoRegistro() {
+    var currentDate = new Date();
+    var formattedDate = currentDate.toLocaleDateString('es-ES'); // Obtiene la fecha actual formateada
+    var fileContent = "Fecha: " + formattedDate + "\n\n" + registros; // Agrega la fecha al principio del contenido
 
-// Guardar los resultados con el nombre y la fecha del usuario en resultados.txt
-registros += "Nombre del usuario: " + nombreUsuario + "\n";
-registros += "Fecha introducida: " + fechaUsuario + "\n\n";
-        var file = new Blob([registros], {type: 'text/plain'});
+    var file = new Blob([fileContent], {type: 'text/plain'});
 
-        // Crear el enlace de descarga
-        var a = document.createElement("a");
-        var url = URL.createObjectURL(file);
-        a.href = url;
-        a.download = "resultado.txt";
-        document.body.appendChild(a);
-        a.click();
-        setTimeout(function(){
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);  
-        }, 0);
-    }
+    // Crear el enlace de descarga
+    var a = document.createElement("a");
+    var url = URL.createObjectURL(file);
+    a.href = url;
+    a.download = "resultados.txt";
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function(){
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);  
+    }, 0);
+}
+
 
     // Función para mostrar los resultados en una nueva ventana
     function mostrarResultados() {
