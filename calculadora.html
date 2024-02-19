@@ -81,16 +81,16 @@
     function calcularPorcentajes() {
         var ejercicio = document.getElementById("ejercicio").value;
         var valor = document.getElementById("valor").value;
-        var resultado = "Ejercicio seleccionado: " + ejercicio + "\n\n";
-        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "\n";
-        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "\n";
-        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "\n";
-        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "\n";
-        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "\n\n";
-        resultado += "Tu RM son: " + (valor) +"kg"+ "\n";
-        document.getElementById("resultados").innerText = resultado;
+        var resultado = "Ejercicio seleccionado: " + ejercicio + "<br><br>";
+        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "<br>";
+        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "<br>";
+        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "<br>";
+        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "<br>";
+        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "<br><br>";
+        resultado += "Tu RM son: " + (valor) +"kg"+ "<br>";
+        document.getElementById("resultados").innerHTML = resultado;
         registros += resultado; // Agregar los nuevos resultados como registros
-        registros += "\n\n"; // Agregar dos saltos de página
+        registros += "<br><br>"; // Agregar dos saltos de página
         limpiar();
         var button = document.getElementById("añadirRegistro");
         //button.style.display = 'block'; // Mostrar el botón de añadir registro
