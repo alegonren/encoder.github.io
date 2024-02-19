@@ -34,10 +34,10 @@
     #descargarLink,
     #mostrarResultados {
         display: none; /* Inicialmente oculto */
-        margin-top: 10px;
-        margin-right: 10px; /* Agregamos margen derecho */
+        margin-top: 20px;
+        margin-right: 20px; /* Agregamos margen derecho */
         padding: 5px 10px;
-        background-color: #007bff;
+        background-color: #D0ECE7;
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -108,12 +108,15 @@
         document.getElementById("valor").value = ""; // Limpiar el valor del campo de entrada
     }
     function añadirNuevoRegistro() {
-    var today = new Date();
-    var dateString = today.toLocaleDateString();
-    var nombre = localStorage.getItem("nombre"); // Obtener el nombre del almacenamiento local
-    var fileContent = "nombre + " · " + dateString + "\n\n" + registros;
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleDateString('es-ES'); // Obtiene la fecha actual formateada
+        var fileContent = "Fecha: " + formattedDate + "\n\n" + registros; // Agrega la fecha al principio del contenido
+        var nombre = localStorage.getItem("nombre"); // Obtener el nombre del almacenamiento local
+        var fileContent = "Nombre: " + nombre + "\n\n" + registros; // Agregar el nombre al principio del contenido
+
+        var fileContent = nombre + " · " + formattedDate + "\n\n" + registros;
         
-    var file = new Blob([fileContent], {type: 'text/plain'});
+        var file = new Blob([fileContent], {type: 'text/plain'});
         
         // Crear el enlace de descarga
         var a = document.createElement("a");
@@ -122,29 +125,29 @@
         a.download = "resultados.txt";
         document.body.appendChild(a);
         a.click();
-        setTimeout(function(){
+        setTimeout(function()
+        {
             document.body.removeChild(a);
             window.URL.revokeObjectURL(url);  
         }, 0);
     }
 
-     function mostrarResultados() 
-     {
-        var nombre = localStorage.getItem("nombre"); // Obtener el nombre del almacenamiento local
+    function mostrarResultados(nombre)
+    {
         var ventanaNueva = window.open('', '_blank');
         var today = new Date();
         var dateString = today.toLocaleDateString();
+        var nombre = localStorage.getItem("nombre"); // Obtener el nombre del almacenamiento local
         ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; }</style></head><body>');
-        //ventanaNueva.document.write("Nombre: " + nombre + "<br>"); // Agrega el nombre en la primera línea
-        ventanaNueva.document.write(nombre + " · " + dateString + "<br><br>");
+        ventanaNueva.document.write("<strong>" + nombre + "</strong> · " + dateString + "<br><br>");
         var lineas = registros.split("\n");
         for (var i = 0; i < lineas.length; i++)
         {
             ventanaNueva.document.write(lineas[i] + "<br>");
         }
-        ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
+        ventanaNueva.document.write('<p style="color: red;"><em>Hacer captura de pantalla para guardar los resultados.</em></p>');
         ventanaNueva.document.write('</body></html>');
-}
+    }
 
 
 </script>
