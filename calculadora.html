@@ -79,18 +79,16 @@
     var registros = ""; // Almacena los registros anteriores
 
     function calcularPorcentajes() {
-        var ejercicio = document.getElementById("ejercicio").value;
-        var valor = document.getElementById("valor").value;
-        var resultado = "Ejercicio seleccionado: " + ejercicio + "\n\n";
-        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "\n";
-        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "\n";
-        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "\n";
-        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "\n";
-        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "\n\n";
-        resultado += "Tu RM son: " + (valor) +"kg"+ "\n";
-        document.getElementById("resultados").innerText = resultado;
+        var resultado = "Ejercicio seleccionado: " + ejercicio + "<br><br>";
+        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "<br>";
+        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "<br>";
+        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "<br>";
+        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "<br>";
+        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "<br><br>";
+        resultado += "Tu RM son: " + (valor) +"kg"+ "<br>";
+        document.getElementById("resultados").innerHTML = resultado;
         registros += resultado; // Agregar los nuevos resultados como registros
-        registros += "\n\n"; // Agregar dos saltos de página
+        registros += "<br><br>"; // Agregar dos saltos de página
         limpiar();
         var button = document.getElementById("añadirRegistro");
         //button.style.display = 'block'; // Mostrar el botón de añadir registro
@@ -118,7 +116,7 @@
         var a = document.createElement("a");
         var url = URL.createObjectURL(file);
         a.href = url;
-        a.download = "resultadoo.txt";
+        a.download = "resultado.txt";
         document.body.appendChild(a);
         a.click();
         setTimeout(function(){
@@ -128,18 +126,21 @@
     }
 
      // Función para mostrar los resultados en una nueva ventana
-    function mostrarResultados()
-    {
-        var ventanaNueva = window.open('', '_blank');
-        var lineas = registros.split("\n");
-        ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; }</style></head><body>');
-        for (var i = 0; i < lineas.length; i++) 
-        {
-            ventanaNueva.document.write(lineas[i] + "<br>");
-        }
-        ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
-        ventanaNueva.document.write('</body></html>');
+   function mostrarResultados()
+   {
+    var ventanaNueva = window.open('', '_blank');
+    var today = new Date();
+    var dateString = today.toLocaleDateString();
+    ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; }</style></head><body>');
+    ventanaNueva.document.write("Fecha de hoy: " + dateString + "<br><br>");
+    var lineas = registros.split("\n");
+    for (var i = 0; i < lineas.length; i++) {
+        ventanaNueva.document.write(lineas[i] + "<br>");
     }
+    ventanaNueva.document.write('<p style="color: red;">Hacer captura de pantalla para guardar los resultados</p>');
+    ventanaNueva.document.write('</body></html>');
+   }
+
 
 </script>
 
