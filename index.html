@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Porcentajes</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    #container {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div id="container">
+    <h2>Calculadora de Porcentajes</h2>
+    <label for="valor">Introduce un valor numérico:</label><br>
+    <input type="number" id="valor" name="valor"><br><br>
+    <button onclick="calcularPorcentajes()">Calcular</button><br><br>
+    <div id="resultados"></div>
+</div>
+
+<script>
+    function calcularPorcentajes() {
+        var valor = document.getElementById("valor").value;
+        var resultadoHTML = "<p>El 50% de " + valor + " es: " + (valor * 0.5) + "</p>";
+        resultadoHTML += "<p>El 60% de " + valor + " es: " + (valor * 0.6) + "</p>";
+        resultadoHTML += "<p>El 70% de " + valor + " es: " + (valor * 0.7) + "</p>";
+        document.getElementById("resultados").innerHTML = resultadoHTML;
+    }
+</script>
+
+</body>
+</html>
