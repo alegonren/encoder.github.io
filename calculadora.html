@@ -138,7 +138,7 @@
         var today = new Date();
         var dateString = today.toLocaleDateString();
         var nombre = localStorage.getItem("nombre"); // Obtener el nombre del almacenamiento local
-        ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; background-color: #D0ECE7; }</style></head><body>');
+        ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; background-color: #F0F8FF; }</style></head><body>');
         ventanaNueva.document.write("<strong>" + nombre + "</strong> · " + dateString + "<br><br>");
         var lineas = registros.split("\n");
         for (var i = 0; i < lineas.length; i++)
