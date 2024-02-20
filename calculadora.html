@@ -37,7 +37,7 @@
         margin-top: 20px;
         margin-right: 20px; /* Agregamos margen derecho */
         padding: 5px 10px;
-        background-color: #007BFF;
+        background-color: #007bff;
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -82,11 +82,11 @@
         var ejercicio = document.getElementById("ejercicio").value;
         var valor = document.getElementById("valor").value;
         var resultado = "Ejercicio seleccionado: " + ejercicio + "\n\n";
-        resultado += "El 50% de tu RM son: " + (valor * 0.5) +"kg"+ "\n";
-        resultado += "El 60% de tu RM son: " + (valor * 0.6) +"kg"+ "\n";
-        resultado += "El 70% de tu RM son: " + (valor * 0.7) +"kg"+ "\n";
-        resultado += "El 80% de tu RM son: " + (valor * 0.8) +"kg"+ "\n";
-        resultado += "El 90% de tu RM son: " + (valor * 0.9) +"kg"+ "\n\n";
+        resultado += "El 50% de tu RM son: " + ( (valor * 0.5).toFixed(2) ) +"kg"+ "\n";
+        resultado += "El 60% de tu RM son: " + ( (valor * 0.6).toFixed(2) ) +"kg"+ "\n";
+        resultado += "El 70% de tu RM son: " + ( (valor * 0.7).toFixed(2) ) +"kg"+ "\n";
+        resultado += "El 80% de tu RM son: " + ( (valor * 0.8).toFixed(2) ) +"kg"+ "\n";
+        resultado += "El 90% de tu RM son: " + ( (valor * 0.9).toFixed(2) ) +"kg"+ "\n\n";
         resultado += "Tu RM son: " + (valor) +"kg"+ "\n";
         document.getElementById("resultados").innerText = resultado;
         registros += resultado; // Agregar los nuevos resultados como registros
