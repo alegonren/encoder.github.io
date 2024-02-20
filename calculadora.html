@@ -37,7 +37,7 @@
         margin-top: 20px;
         margin-right: 20px; /* Agregamos margen derecho */
         padding: 5px 10px;
-        background-color: #D0ECE7;
+        background-color: #007BFF;
         color: white;
         text-decoration: none;
         border-radius: 5px;
@@ -138,14 +138,14 @@
         var today = new Date();
         var dateString = today.toLocaleDateString();
         var nombre = localStorage.getItem("nombre"); // Obtener el nombre del almacenamiento local
-        ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; color: #D0ECE7; }</style></head><body>');
+        ventanaNueva.document.write('<html><head><style>body { font-family: Arial, sans-serif; background-color: #D0ECE7; }</style></head><body>');
         ventanaNueva.document.write("<strong>" + nombre + "</strong> · " + dateString + "<br><br>");
         var lineas = registros.split("\n");
         for (var i = 0; i < lineas.length; i++)
         {
             ventanaNueva.document.write(lineas[i] + "<br>");
         }
-        ventanaNueva.document.write('<p style="color: red;"><em>Hacer captura de pantalla para guardar los resultados.</em></p>');
+        ventanaNueva.document.write('<p style="color: red; opacity: 0.7;"><em>Hacer captura de pantalla para guardar los resultados.</em></p>');
         ventanaNueva.document.write('</body></html>');
     }
 
